@@ -25,7 +25,7 @@ public class MainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setAttribute("name", "Nik&Ann corp.");
+		request.setAttribute("name", "Nik corp.");
 		this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

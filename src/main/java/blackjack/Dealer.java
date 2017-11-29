@@ -7,6 +7,9 @@ public class Dealer  {
 	private ArrayList<Card> cards;
 	private boolean insurance;
 
+	public boolean isInsuranceAllowed() {
+		return insurance;
+	}
 	public Dealer(CardDeck deck) {
 		this.deck = deck;
 		cards = new ArrayList<Card>(5);
@@ -14,6 +17,12 @@ public class Dealer  {
 	}
 	public synchronized void hit(Player pl){
 		pl.putCard(deck.getCard());
+	}
+	public synchronized void insurance(Player pl){
+		if(insurance)
+			pl.makeInsuranceBet();
+		else 
+			throw new IllegalStateException("Dealer doesn't have ace.");
 	}
 	public void takeBet(Player pl, int bet, int max)throws Exception{
 		pl.setBet(bet, max);

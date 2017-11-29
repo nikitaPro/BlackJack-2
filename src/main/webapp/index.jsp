@@ -7,9 +7,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <style>
+   body {
+    background: url(images/ship_long.png) repeat-x 0 100% fixed,
+                linear-gradient(to top, #5080b1, #004e8c) fixed;
+    animation: city 30s linear infinite;
+    -webkit-animation: city 60s linear infinite;
+   }
+   @keyframes city {
+    from { background-position: -1300px 100%, 0 0;}
+    to { background-position: 0 100%, 0 0; }
+   }
+   @-webkit-keyframes city {
+    from { background-position: -1300px 100%, 0 0;}
+    to { background-position: 0 100%, 0 0; }
+   }
+   main {
+    width: 50%;
+    min-height: 411px;
+    display: block;
+    margin: auto;
+    background: rgba(255,255,255,0.6);
+    padding: 20px;
+   }
+  </style>
 <title>Hello</title>
 </head>
 <body>
+<audio src="audio/piraty-karibskogo-morya--original.mp3" autoplay>
+  Your browser does not support the <code>audio</code> element.
+</audio>
 	<h1 align = center>
 		<c:set var="name" scope = "session" value="${requestScope.name}"/>
 		<c:choose>

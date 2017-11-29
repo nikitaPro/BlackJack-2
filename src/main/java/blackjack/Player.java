@@ -10,6 +10,7 @@ public class Player {
 	private int id = 0;
 	private int account =0;
 	private int bet = 0;
+	private int insuranceBet = 0;
 	private ArrayList<Card> cards;
 	
 	public Player(DataBase db, String login,String pass) throws SQLException{
@@ -59,11 +60,17 @@ public class Player {
 	public void won() {
 		this.account+=bet;
 		bet=0;
+		this.account-=insuranceBet;
+		insuranceBet=0;
 		cards.clear();
 	}
-	public void lose() {
+	public void lose(boolean blackjack) {
 		this.account-=bet;
 		bet=0;
+		if(blackjack)
+			this.account+=insuranceBet*2;
+		else
+			this.account-=insuranceBet;
 		cards.clear();
 	}
 	public void saveAccount(DataBase db) throws SQLException{
@@ -90,5 +97,8 @@ public class Player {
 	}
 	public String[] getCards(){
 		return (String[])cards.toArray();
+	}
+	public void makeInsuranceBet(){
+		insuranceBet=bet/2;
 	}
 }
